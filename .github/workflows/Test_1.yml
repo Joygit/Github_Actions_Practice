@@ -1,5 +1,5 @@
 # 07-expressions.yaml
-name: using expression
+name: Using Expression
 run-name: 07 - Using Expressions | DEBUG - ${{ inputs.debug && 'ON' || 'OFF' }}
 on:
   workflow_dispatch:
