@@ -1,0 +1,18 @@
+name : Simple Python Workflow
+on: workflow_dispatch
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checout Code
+       uses: actions/checkout@v2
+
+     - name: Run summation.py
+       id: calculate
+       run: python summation.py
+
+     - name: Display Result
+       run: |
+         echo "Total: ${{ steps.calculate.outputs.total }}"
+         echo "Final: ${{ steps.calculate.outputs.final }}"
