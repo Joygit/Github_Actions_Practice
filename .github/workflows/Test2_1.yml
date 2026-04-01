@@ -11,7 +11,7 @@ jobs:
      - name: Run summation.py
        id: calc
        run: |
-         output = $(python summation.py)   #capture the output of the script
+         output=$(python summation.py)   #capture the output of the script
          echo "$output"      #print the output to the 
          
          total=$(echo "$output" | grep "Total:" | awk '{print $2}')   #extract total value
