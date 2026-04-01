@@ -1,9 +1,9 @@
-import os 
+
 numbers = [10, 20, 30, 40, 50]
 total = sum(numbers)
 final = total * 1.18
-# print(f"Total: {total}")
-# print(f"Final : {final}")
+print(f"Total: {total}")
+print(f"Final : {final}")
 
    
 
