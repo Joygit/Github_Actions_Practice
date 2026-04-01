@@ -1,0 +1,20 @@
+name : Simple Python Workflow v-0.1
+on: workflow_dispatch
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+     - name: Checout Code
+       uses: actions/checkout@v2
+
+     - name: Run summation.py
+       id: calculate
+       run: |
+         output = $(python summation.py)   #capture the output of the script
+         echo "$output"      #print the output to the console
+
+     - name: Display Result
+       run: |
+         echo "Total: ${{ steps.calculate.outputs.total }}"
+         echo "Final: ${{ steps.calculate.outputs.final }}"
