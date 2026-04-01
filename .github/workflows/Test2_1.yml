@@ -6,15 +6,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - name: Checout Code
-       uses: actions/checkout@v2
+       uses: actions/checkout@v3
 
      - name: Run summation.py
-       id: calculate
+       id: calc
        run: |
          output = $(python summation.py)   #capture the output of the script
-         echo "$output"      #print the output to the console
+         echo "$output"      #print the output to the 
+         
+         total=$(echo "$output" | grep "Total:" | awk '{print $2}')   #extract total value
+         final=$(echo "$output" | grep "Final:" | awk '{print $2}')   #extract final value
+
+          echo "total=$total" >> $GITHUB_OUTPUT   #set total as output variable
+          echo "final=$final" >> $GITHUB_OUTPUT   #set final as output variable
 
      - name: Display Result
        run: |
-         echo "Total: ${{ steps.calculate.outputs.total }}"
-         echo "Final: ${{ steps.calculate.outputs.final }}"
+         echo "Total: ${{ steps.calc.outputs.total }}"
+         echo "Final: ${{ steps.calc.outputs.final }}"
